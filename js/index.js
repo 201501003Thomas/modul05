@@ -34,7 +34,7 @@ var doublesix,maxscore;
 document.getElementById('okmax').addEventListener('click',function(){
 	maxscore=document.getElementById('scorenum').value;
 	if(!maxscore){
-		maxscore=50;;
+		maxscore=50;
 	}
 	document.getElementById('curmax').innerHTML='Current Max Score '+maxscore;
 	console.log('Current Max Score '+maxscore);
@@ -43,16 +43,21 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
 	if (gamePlaying) {
 		// 1. random number
 		var dice = Math.floor(Math.random() * 6) + 1;
+		var dice2= Math.floor(Math.random() * 6) + 1;
 		// 2. display result
 		var diceDOM = document.querySelector('.dice');
 		diceDOM.style.display = 'block';
 		diceDOM.src = diceimgs['diceimg' + activePlayer + dice];
 
-		document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
+		var diceDOM2 = document.querySelector('.dice2');
+		diceDOM2.style.display = 'block';
+		diceDOM2.src = diceimgs['diceimg' + activePlayer + dice2];
+
+		document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice+dice2 + '</em>';
 		// 3. Update round score if the rolled number is not 1
-		if (dice !== 1) {
+		if (dice !== 1 && dice2!==1) {
 			hideRolledMsg();
-			if(dice==6 && doublesix==6){
+			if(dice+dice2==12 && doublesix==12){
 				disableBtn(btnRoll, 1000);
 				hideRolledMsg();
 				doublesix=0;
@@ -60,11 +65,11 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
 				document.getElementById('score-'+activePlayer).textContent =scores[activePlayer];
 				document.querySelector('.player-'+activePlayer+'-rolled-2').style.visibility = 'visible';
 				nextPlayer();
-				console.log(doublesix+dice +' Rolled 6 Twice');
+				console.log(doublesix+(dice+dice2) +' Rolled 6 Twice');
 			}
-			doublesix=dice;
+			doublesix=dice+dice2;
 			console.log(doublesix+'Rolled');
-			roundScore += dice;
+			roundScore += dice+dice2;
 			document.querySelector('#current-' + activePlayer).textContent = roundScore;
 		} else {
 			//disable button
@@ -120,6 +125,7 @@ function init() {
 	activePlayer = 0;
 	gamePlaying = true;
 	document.querySelector('.dice').style.display = 'none';
+	document.querySelector('.dice2').style.display = 'none';
 	document.getElementById('score-0').textContent = '0';
 	document.getElementById('score-1').textContent = '0';
 	document.getElementById('current-0').textContent = '0';
