@@ -30,14 +30,14 @@ var diceimgs = {
  diceimg16: "https://cdn.pbrd.co/images/714ZovsdD.png"
 };
 init();
-var doublesix,maxscore=50;
+var doublesix,maxscore;
 document.getElementById('okmax').addEventListener('click',function(){
 	maxscore=document.getElementById('scorenum').value;
 	if(!maxscore){
 		maxscore=50;;
 	}
 	document.getElementById('curmax').innerHTML='Current Max Score '+maxscore;
-	console.log(maxscore);
+	console.log('Current Max Score '+maxscore);
 });
 document.querySelector('.btn-roll').addEventListener('click', function(){
 	if (gamePlaying) {
@@ -93,7 +93,7 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
 
 			//check if player won the game
 
-			if (scores[activePlayer] >= 50) {
+			if (scores[activePlayer] >= maxscore) {
 				document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
 				document.querySelector('.dice').style.display = 'none';
 				document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner-' + activePlayer);
@@ -132,6 +132,7 @@ function init() {
 	document.querySelector('.player-0-panel').classList.add('active-0');
 	document.querySelector('.player-0-panel').classList.remove('winner-0');
 	document.querySelector('.player-1-panel').classList.remove('winner-1');
+	hideRolledMsg();
 
 }
 

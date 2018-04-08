@@ -198,15 +198,22 @@ i {
 .winner-0 .player-name { font-weight: 300; color: #EB4D4D;}
 .winner-1 .player-name { font-weight: 300; color: #2ecc71;}
 .form{
-    border: 50%;
+    /* width: 50%;
+    height: 50%; */
+    margin: 0 auto;
     text-align: center;
+    padding: 10px;
+    background: cyan;
 }
 .formcls .scoreset {
+    display: block;
     background: blue;
 }
 .formcls .buttonset{
     background: burlywood;
 }
 .formcls .curmax{
-    background-color: cyan;
+    margin: 0 auto;
+    display: block;
+    background-color:peru;
 }
