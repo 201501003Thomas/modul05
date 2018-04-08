@@ -197,5 +197,6 @@ i {
 .winner-0 .player-name { font-weight: 300; color: #EB4D4D;}
 .winner-1 .player-name { font-weight: 300; color: #2ecc71;}
 
-.scoreset {}
-.buttonset{}
+.formset{}
+.formset .scoreset {}
+.formset .buttonset{}
