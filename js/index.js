@@ -30,7 +30,13 @@ var diceimgs = {
  diceimg16: "https://cdn.pbrd.co/images/714ZovsdD.png"
 };
 init();
-
+var doublesix,maxscore;
+document.getElementById('okmax').addEventListener('click',function(){
+	if(maxscore==null){
+		maxscore=50;
+		document.getElementById('curmax').=;
+	}
+});
 document.querySelector('.btn-roll').addEventListener('click', function(){
 	if (gamePlaying) {
 		// 1. random number
@@ -41,25 +47,31 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
 		diceDOM.src = diceimgs['diceimg' + activePlayer + dice];
 
 		document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
-		var doublesix;
 		// 3. Update round score if the rolled number is not 1
 		if (dice !== 1) {
 			hideRolledMsg();
-			//add score
-					// disableBtn(btnRoll, 1000);
-					// hideRolledMsg();
-					// scores[activePlayer]=0;
-					// document.querySelector('.player-'+activePlayer+'-rolled-2').style.visibility = 'visible';
-					// nextPlayer();
+			if(dice==6 && doublesix==6){
+				disableBtn(btnRoll, 1000);
+				hideRolledMsg();
+				doublesix=0;
+				scores[activePlayer]=0;
+				document.getElementById('score-'+activePlayer).textContent =scores[activePlayer];
+				document.querySelector('.player-'+activePlayer+'-rolled-2').style.visibility = 'visible';
+				nextPlayer();
+				console.log(doublesix+dice +' Rolled 6 Twice');
+			}
+			doublesix=dice;
+			console.log(doublesix+'Rolled');
 			roundScore += dice;
 			document.querySelector('#current-' + activePlayer).textContent = roundScore;
 		} else {
 			//disable button
-
+			doublesix=0;
 			disableBtn(btnRoll, 1000);
 			hideRolledMsg();
 			document.querySelector('.player-'+activePlayer+'-rolled-1').style.visibility = 'visible';
 			nextPlayer();		
+			console.log(doublesix+' Rolled 1');
 		}
 	}
 	
@@ -85,8 +97,11 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
 				document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner-' + activePlayer);
 				document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active-' + activePlayer);
 				gamePlaying = false;
-
+				doublesix=0;
+				console.log(doublesix+' Winner');
 			} else {
+				doublesix=0;
+				console.log(doublesix+' Hold');
 				nextPlayer();
 			}
 		}
