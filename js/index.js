@@ -34,7 +34,7 @@ var doublesix,maxscore;
 document.getElementById('okmax').addEventListener('click',function(){
 	if(maxscore==null){
 		maxscore=50;
-		document.getElementById('curmax').=;
+		document.getElementById('curmax').innerHTML=maxscore;
 	}
 });
 document.querySelector('.btn-roll').addEventListener('click', function(){
