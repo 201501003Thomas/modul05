@@ -54,6 +54,7 @@ h3, p, li {text-transform: uppercase;}
 
 
 
+
 /**********************************************
 *** PLAYERS
 **********************************************/
@@ -196,13 +197,15 @@ i {
 .winner-1 { background-color: rgba(46, 204, 113, 0.1) }
 .winner-0 .player-name { font-weight: 300; color: #EB4D4D;}
 .winner-1 .player-name { font-weight: 300; color: #2ecc71;}
-
-.scoreset {
+.form{
+    
+}
+.formcls .scoreset {
     background: blue;
 }
-.buttonset{
+.formcls .buttonset{
     background: burlywood;
 }
-.curmax{
+.formcls .curmax{
     background-color: cyan;
 }

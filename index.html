@@ -14,6 +14,13 @@
 </head>
 
 <body>
+	<div class="form">
+			<form class="formcls">
+				<input type="number" class="scorenum" id="scorenum" placeholder="Input Max Score">
+				<input type="button" value="Change Max Score" class="buttonset" id="okmax">
+			</form>
+			<span class="curmax" id="curmax"></span>
+	</div>
      <div class="wrapper clearfix" >
             <div class="player-0-panel active-0">
 				<div class="game-panel">
@@ -45,11 +52,6 @@
 				</div>	
             </div>
             <div class="game-panel">
-			<form>
-				<input type="number" class="scorenum" id="scorenum" placeholder="Input Max Score">
-				<input type="button" value="Change Max Score" class="buttonset" id="okmax">
-			</form>
-			<span class="curmax" id="curmax"></span>
             <button class="btn-new"><i class="ion-ios-plus-outline icon color-0"></i>New game</button>
             <button class="btn-roll"><i class="ion-ios-loop icon color-0"></i>Roll dice</button>
             <button class="btn-hold"><i class="ion-ios-download-outline icon color-0"></i>Hold</button>
