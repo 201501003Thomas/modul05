@@ -43,20 +43,37 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
 	if (gamePlaying) {
 		// 1. random number
 		var dice = Math.floor(Math.random() * 6) + 1;
+		//Dice 2 Value
 		var dice2= Math.floor(Math.random() * 6) + 1;
 		// 2. display result
 		var diceDOM = document.querySelector('.dice');
 		diceDOM.style.display = 'block';
 		diceDOM.src = diceimgs['diceimg' + activePlayer + dice];
 
+		//Dice 2
 		var diceDOM2 = document.querySelector('.dice2');
 		diceDOM2.style.display = 'block';
 		diceDOM2.src = diceimgs['diceimg' + activePlayer + dice2];
 
-		document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice+dice2 + '</em>';
+		document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice+dice2+ '</em>';
 		// 3. Update round score if the rolled number is not 1
 		if (dice !== 1 && dice2!==1) {
 			hideRolledMsg();
+			//Double Six
+			// if(dice==6 && doublesix==6){
+			// 	disableBtn(btnRoll, 1000);
+			// 	hideRolledMsg();
+			// 	doublesix=0;
+			// 	scores[activePlayer]=0;
+			// 	document.getElementById('score-'+activePlayer).textContent =scores[activePlayer];
+			// 	document.querySelector('.player-'+activePlayer+'-rolled-2').style.visibility = 'visible';
+			// 	nextPlayer();
+			// 	console.log(doublesix+dice +' Rolled 6 Twice');//Cek output angka 6 yang double
+			// }
+			// doublesix=dice;
+			// roundScore += dice;
+			
+			// Double Twelve
 			if(dice+dice2==12 && doublesix==12){
 				disableBtn(btnRoll, 1000);
 				hideRolledMsg();
@@ -68,8 +85,9 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
 				console.log(doublesix+(dice+dice2) +' Rolled 6 Twice');
 			}
 			doublesix=dice+dice2;
-			console.log(doublesix+'Rolled');
 			roundScore += dice+dice2;
+			console.log(doublesix+' Rolled');//Cek angka yang di hasilkan (kaya log)
+			
 			document.querySelector('#current-' + activePlayer).textContent = roundScore;
 		} else {
 			//disable button
@@ -125,6 +143,7 @@ function init() {
 	activePlayer = 0;
 	gamePlaying = true;
 	document.querySelector('.dice').style.display = 'none';
+	//Dice 2 element
 	document.querySelector('.dice2').style.display = 'none';
 	document.getElementById('score-0').textContent = '0';
 	document.getElementById('score-1').textContent = '0';
