@@ -30,12 +30,14 @@ var diceimgs = {
  diceimg16: "https://cdn.pbrd.co/images/714ZovsdD.png"
 };
 init();
-var doublesix,maxscore;
+var doublesix,maxscore=50;
 document.getElementById('okmax').addEventListener('click',function(){
-	if(maxscore==null){
-		maxscore=50;
-		document.getElementById('curmax').innerHTML=maxscore;
+	maxscore=document.getElementById('scorenum').value;
+	if(!maxscore){
+		maxscore=50;;
 	}
+	document.getElementById('curmax').innerHTML='Current Max Score '+maxscore;
+	console.log(maxscore);
 });
 document.querySelector('.btn-roll').addEventListener('click', function(){
 	if (gamePlaying) {
