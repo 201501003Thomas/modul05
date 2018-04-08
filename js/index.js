@@ -31,24 +31,26 @@ var diceimgs = {
 };
 init();
 
-
-
 document.querySelector('.btn-roll').addEventListener('click', function(){
 	if (gamePlaying) {
 		// 1. random number
 		var dice = Math.floor(Math.random() * 6) + 1;
-
 		// 2. display result
 		var diceDOM = document.querySelector('.dice');
 		diceDOM.style.display = 'block';
 		diceDOM.src = diceimgs['diceimg' + activePlayer + dice];
 
-		document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em';
-
+		document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
+		var doublesix;
 		// 3. Update round score if the rolled number is not 1
 		if (dice !== 1) {
 			hideRolledMsg();
 			//add score
+					// disableBtn(btnRoll, 1000);
+					// hideRolledMsg();
+					// scores[activePlayer]=0;
+					// document.querySelector('.player-'+activePlayer+'-rolled-2').style.visibility = 'visible';
+					// nextPlayer();
 			roundScore += dice;
 			document.querySelector('#current-' + activePlayer).textContent = roundScore;
 		} else {
@@ -94,34 +96,6 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
 
 
 document.querySelector('.btn-new').addEventListener('click', init);
-
-document.querySelector('.btn-rules').addEventListener('click', function(){
-	    var games = document.getElementsByClassName('game-panel');
-		for(i=0;i<games.length;i++){
-			games[i].style.display = 'none';
-		}
-	    
-	    document.querySelector('.btn-back').style.display = 'block';
-		var rules = document.getElementsByClassName('rules-panel');
-		for(i=0;i<rules.length;i++){
-			rules[i].style.display = 'block';
-		}
-	
-});
-
-document.querySelector('.btn-back').addEventListener('click', function(){
-	    var games = document.getElementsByClassName('game-panel');
-		for(i=0;i<games.length;i++){
-			games[i].style.display = 'block';
-		}
-	    
-	    document.querySelector('.btn-back').style.display = 'none';
-		var rules = document.getElementsByClassName('rules-panel');
-		for(i=0;i<rules.length;i++){
-			rules[i].style.display = 'none';
-		}
-	
-});
 
 function init() {
 	scores = [0,0];
@@ -173,4 +147,6 @@ function disableBtn(btn, time) {
 function hideRolledMsg(){
 	document.querySelector('.player-0-rolled-1').style.visibility = 'hidden';
 	document.querySelector('.player-1-rolled-1').style.visibility = 'hidden';
+	document.querySelector('.player-0-rolled-2').style.visibility = 'hidden';
+	document.querySelector('.player-1-rolled-2').style.visibility = 'hidden';
 }
